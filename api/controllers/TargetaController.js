@@ -11,7 +11,7 @@ module.exports = {
 
         //console.log('idCard',idCard);
         var myQuery = Targeta.findOne();
-        myQuery.where({'description':{startsWith:idCard},'estado':true});
+        myQuery.where({'description':idCard,'estado':true});
 
         myQuery.exec(function callBack(err,results){
             //console.log(results)

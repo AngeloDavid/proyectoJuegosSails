@@ -33,13 +33,13 @@ module.exports = {
       },
       telefono :{
         type:'string',
-        columnName:'tel_cli',
-        required: true
+        columnName:'tel_cli'
+        
       },
       email :{
         type:'email',
-        columnName:'email_cli',
-        required: true
+        columnName:'email_cli'
+        
       },
       direccion :{
         type:'text',

@@ -23,7 +23,6 @@ connection:'PJMysqlServer',
         },
         creditos:{
           type:'float',
-          required: true,
           columnName:'cred_targ',
            defaultsTo: '5.0'
         },
