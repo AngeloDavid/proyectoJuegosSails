@@ -15,11 +15,11 @@ connection:'PJMysqlServer',
 
       },
       hora_inicio:{
-        type:'datetime',
+        type:'string',
         columnName:'ini_hor',
       },
       hora_final:{
-        type:'datetime',
+        type:'string',
         columnName:'final_hor',
       },
       estado:{

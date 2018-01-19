@@ -12,7 +12,7 @@ module.exports = {
     abono:{
       type:'float',
       columnName:'fec_cons',
-      require:true
+      required:true
     },
     total:{
       type:'float',
