@@ -25,11 +25,7 @@ module.exports = {
         type:'string',
         columnName:'ape_cli',
         required: true
-      },
-      edad :{
-        type:'integer',
-        columnName:'date_cli'
-      },      
+      },   
       fecha_nacimiento :{
         type:'string',
         columnName:'fecNac_cli',

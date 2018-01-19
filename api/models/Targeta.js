@@ -9,22 +9,34 @@ module.exports = {
 
 connection:'PJMysqlServer',
   attributes: {
+        description:{
+          type:'string',
+          required:true,
+          columnName:'descp_targ',
+          
+        },
         saldo:{
           type:'float',
           required: true,
+          columnName:'sal_targ',
+           defaultsTo: '5.0'
+        },
+        creditos:{
+          type:'float',
+          required: true,
+          columnName:'cred_targ',
            defaultsTo: '5.0'
         },
         fecha_vencimiento:{
-          type:'datetime',
-          columnName:'fv_targ',
-          required: true
+          type:'string',
+          columnName:'fv_targ',          
         },
         fecha_Activacion:{
-          type:'datetime',
+          type:'string',
           columnName:'fa_targ'
         },
         fecha_UltimoMovimiento:{
-          type:'datetime',
+          type:'string',
           columnName:'fum_targ'
         },
         tipo:{

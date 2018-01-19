@@ -22,9 +22,11 @@ module.exports = {
         type:'integer',
         columnName:'int_maq'
       },
-      tiempo:{
-        type:'integer',
-        columnName:'tiemp_maq'
+      tipo:{
+        type:'string',
+        columnName:'type_maq',
+        required:true,
+        enum: ['credito', 'saldo']
       },
       estado:{
         type:'boolean',

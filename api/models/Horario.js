@@ -17,12 +17,10 @@ connection:'PJMysqlServer',
       hora_inicio:{
         type:'datetime',
         columnName:'ini_hor',
-        require:true
       },
       hora_final:{
         type:'datetime',
-        columnName:'ini_hor',
-        require:true
+        columnName:'final_hor',
       },
       estado:{
           type:'boolean',

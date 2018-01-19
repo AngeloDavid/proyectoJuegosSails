@@ -12,7 +12,7 @@ connection:'PJMysqlServer',
     abono:{
       type:'float',
       columnName:'abo_reca',
-      require:true
+      required:true
     },
     total:{
       type:'float',
@@ -21,6 +21,15 @@ connection:'PJMysqlServer',
     saldo:{
       type:'float',
       columnName:'sal_reca'
+    },    
+    credito:{
+      type:'float',
+      columnName:'credito_reca'
+    },
+    observaciones: {
+      type:'text',
+      columnName:'obse_reca'
+
     },
 
     //Referencia de tarjeta

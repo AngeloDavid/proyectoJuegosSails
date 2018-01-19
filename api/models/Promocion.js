@@ -25,16 +25,20 @@ connection:'PJMysqlServer',
       },
       operacion:{
         type:'string',
-        columnName:'cant_pro',
+        columnName:'oper_pro',
         required:true
       },
+      aplica_a:{
+        type:'string',
+        columnName:'apli_pro',
+        enum: ['recarga', 'consumo',]
+      },
       fecha_vencimiento:{
-          type:'datetime',
-          columnName:'fv_pro',
-          required: true
+          type:'string',
+          columnName:'fv_pro',          
         },
       fecha_Activacion:{
-          type:'datetime',
+          type:'string',
           columnName:'fa_pro'
         },
       islimitado:{
