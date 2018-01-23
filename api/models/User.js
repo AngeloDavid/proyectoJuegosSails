@@ -6,10 +6,25 @@
  */
 
 module.exports = {
-
+  connection:'PJMysqlServer',
   attributes: {
-      
 
+  	fullName :{
+        type:'string',
+        columnName:'fullname_user',
+        required: true
+      },
+  	 email :{
+        type:'email',
+        columnName:'email_user',
+        required: true        
+      },
+      password :{
+        type:'string',  
+        size:16,
+        columnName:'password_user',
+        required: true
+      }
   }
 };
 
