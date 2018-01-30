@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
+	BuscarFecha: function (req,res) {
+        Recarga.find({'createdAt':{'>':new WebKitDirectoryReader}})
+    }
 };
 

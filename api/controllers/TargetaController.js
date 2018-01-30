@@ -9,12 +9,10 @@ module.exports = {
 	buscarIdCard: function (req, res) {
         var idCard =req.params.id;
 
-        //console.log('idCard',idCard);
-        var myQuery = Targeta.findOne();
-        myQuery.where({'description':idCard,'estado':true});
-
-        myQuery.exec(function callBack(err,results){
-            //console.log(results)
+        console.log('idCard',idCard);
+        var myQuery = Targeta.findOne({ description: { 'like': '' + idCard }, estado: true }).exec(function (err,results){
+            console.log(err)
+            console.log(myQuery);
             if(err || results == undefined){
                 return res.json({
                         error: false,
@@ -22,8 +20,7 @@ module.exports = {
                         cliente:[]
                     }) ;
             }else{
-                var user=Cliente.findOne({'id': results.userFk});
-                user.exec(function callBackCli(err2,results2) {                    
+                var user=Cliente.findOne({'id': results.userFk}).exec(function (err2,results2) {                    
                     if(err2){
                     error =  false;    
                     }else{

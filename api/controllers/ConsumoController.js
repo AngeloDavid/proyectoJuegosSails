@@ -35,8 +35,6 @@ module.exports = {
                 } else if (targetaRes.length == 1) {                   
                     
                     targetaRes = targetaRes[0];
-
-                    console.log('fecha_vencimiento' + targetaRes.fecha_vencimiento);
                     var vencimiento = isValidDate(targetaRes.fecha_vencimiento,"YYYY-mm-dd");
                     var activacion = isValidDate(targetaRes.fecha_Activacion,"YYYY-mm-dd");
                     if (!targetaRes.islimitado) {
@@ -160,26 +158,31 @@ module.exports = {
         console.log(req.allParams());
 
         function isValidDate (dateString,format) {
-            console.log(dateString);
-            switch (format) {
-                case "YYYY-mm-dd":
-                    var regEx = /^\d{4}-\d{2}-\d{2}$/;
-                    if (!dateString.match(regEx)) return null;  // Invalid format
-                    var d = new Date(dateString);
-                    if (!d.getTime() && d.getTime() !== 0) return null; // Invalid date
-                    return d.toISOString().slice(0, 10) === dateString;        
-                    break;
-                case "h:m":
-                    var now = new Date();                    
-                    now.setHours(dStr.substr(0, dStr.indexOf(":")));
-                    now.setMinutes(dStr.substr(dStr.indexOf(":") + 1));
-                    now.setSeconds(0);
-                    return now;
-                    break;                 
-                default:
-                    return 'Formato invalido'
-                    break;
-            }            
+            if (dateString == null){
+                console.log(dateString);
+                return '';
+            }else{                
+                switch (format) {
+                    case "YYYY-mm-dd":
+                        var regEx = /^\d{4}-\d{2}-\d{2}$/;
+                        if (!dateString.match(regEx)) return null;  // Invalid format
+                        var d = new Date(dateString);
+                        if (!d.getTime() && d.getTime() !== 0) return null; // Invalid date
+                        return d.toISOString().slice(0, 10) === dateString;
+                        break;
+                    case "h:m":
+                        var now = new Date();
+                        now.setHours(dStr.substr(0, dStr.indexOf(":")));
+                        now.setMinutes(dStr.substr(dStr.indexOf(":") + 1));
+                        now.setSeconds(0);
+                        return now;
+                        break;
+                    default:
+                        return 'Formato invalido'
+                        break;
+                }            
+            }
+            
         }
         function operacion(oper_pro, cant_pro,saldo) {
             switch (oper_pro) {
