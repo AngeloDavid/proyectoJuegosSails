@@ -71,11 +71,11 @@ module.exports = {
       });
     })
 
-  }
+  },
+
 
   signOut:function(req, res) {
     console.log('Secion terminada');
-
 
   }
 
