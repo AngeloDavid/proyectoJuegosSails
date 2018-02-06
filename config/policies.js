@@ -31,6 +31,24 @@ module.exports.policies = {
   },
   'MaquinaController': {
     '*': true // We dont need authorization here, allowing public access
+  },
+  'ClienteController': {
+    '*': true // We dont need authorization here, allowing public access
+  },
+  'ConsumoController': {
+    '*': true // We dont need authorization here, allowing public access
+  },
+  'PromocionController': {
+    '*': true // We dont need authorization here, allowing public access
+  },
+  'RecargaController': {
+    '*': true // We dont need authorization here, allowing public access
+  },
+  'HorarioController': {
+    '*': true // We dont need authorization here, allowing public access
+  },
+  'TargetaController': {
+    '*': true // We dont need authorization here, allowing public access
   }
 
 
