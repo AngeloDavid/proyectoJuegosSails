@@ -12,22 +12,23 @@ module.exports = {
                 
 
         var parametros = req.allParams();
-
+        
         var idTarjeta = parametros.idTargeta;
         var idMaquin = parametros.idMaquin;
+        //idTarjeta = idTarjeta.slice(1, (idTarjeta.length - 1));
         var hoyFecha = new Date();
         var days = ["DOMINGO","LUNES","MARTES","MIERCOLES","JUEVES","VIERNES","SABADO"];
         var dia = days[hoyFecha.getDay()];
         
         var querySql = "SELECT targeta.id, descp_targ, sal_targ AS 'Saldo', cred_targ as 'Credito',tipo_targ as 'Tipo',islimitado_targ as 'islimitado',fv_targ as 'fecha_vencimiento', fa_targ as 'fecha_Activacion', CONCAT( nom_cli,' ',ape_cli) as 'Cliente' FROM targeta ";
         querySql += "LEFT JOIN cliente on (cliente.id = targeta.userFk) ";
-        querySql += "WHERE estado_targ = 1 and targeta.id = "+ idTarjeta;
+        querySql += "WHERE estado_targ = 1 and targeta.descp_targ = '"+ idTarjeta+"'";
         // console.log(querySql);
                 
         var tarQuery = Targeta.query(querySql,
             function (err, targetaRes) {
                 if (err) {
-                    // console.log(err);
+                    console.log(err);
                     return res.json({
                         error: true, 
                         msg: 'Vuelva a ingresar la tarjeta -ECSW01'  
@@ -68,12 +69,22 @@ module.exports = {
                                     var tarifa = maquina.tarifa;
                                     var tipo = maquina.tipo; 
                                     var error =false;
-                                    var msg = '';
+                                    var msg = 'Transacción Correcta';                                    
                                     if (tipo == 'credito') {
-                                        targetaRes.Credito -= tarifa;
+                                        if (0 < (targetaRes.Credito - tarifa) ){
+                                            targetaRes.Credito -= tarifa;
+                                        }else{
+                                            msg = "Su Tarjeta no dispone del suficiente CREDITO para esta máquina";
+                                        }                                        
                                     }else{
-                                        targetaRes.Saldo -= tarifa;
+                                        if (0 < (targetaRes.Saldo - tarifa)) {                                            
+                                            targetaRes.Saldo -= tarifa;
+                                        } else{
+                                            msg = "Su Tarjeta no dispone del suficiente SALDO para esta máquina";
+                                        }                                        
                                     }
+                                    
+                                    
                                     
                                     return res.json({
                                         error: error,
@@ -149,6 +160,7 @@ module.exports = {
                 } else {
                     return res.json({
                         error: true,
+                        msg: 'Vuelva a ingresar la tarjeta -ECSW02'  
                     });
                 }
             });
